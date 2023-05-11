@@ -1,0 +1,67 @@
+url: https://leightonpayne.github.io/padlocdev/
+template:
+  bootstrap: 5
+
+reference:
+
+- title: Read
+  desc: >
+    Read padloc-db files.
+- contents:
+  - read_hmm
+  - multi_read_hmm
+  - read_hmm_header
+  - multi_read_hmm_header
+  - read_padloc_model
+  - multi_read_padloc_model
+  - read_hmm_meta
+  - read_sys_meta
+  - read_sys_groups
+
+- title: Operate
+  desc: >
+    Perform modifications on padloc-db objects.
+- contents:
+  - expand_gene_groups
+  - expand_gene_groups_all
+  - pull_genes
+  - expand_hmm_meta
+  - collapse_hmm_meta
+
+- title: Validate
+  desc: >
+    "Validate padloc-db data and identify inconsistencies."
+- contents:
+  - valid_padloc_model
+  - report_padloc_model_validity
+  - why_invalid
+  - compare_hmm_files_hmm_meta
+  - compare_sys_files_sys_meta
+  - compare_sys_meta_sys_groups
+  - compare_sys_files_hmm_meta
+
+- title: Everything else
+- contents:
+  - padloc_model
+  - padlocdev_example
+  - a_vs_b
+  - system_cp_files
+  - system_cp_hmm
+  - system_cp_sys
+  - system_mv_deprecated
+  - which_uses
+  - build_generic_hmm_meta
+  - build_generic_padloc_models
+  - build_generic_sys_meta
+  - divide_database
+  - filter_hmm_meta
+  - filter_models
+  - filter_sys_meta
+  - group_models
+  - group_overlap
+  - multi_write_padloc_model
+  - padloc_model_to_chr
+  - pull_intersect
+  - summarise_groups
+  - verify_hmm_names
+  - write_padloc_model

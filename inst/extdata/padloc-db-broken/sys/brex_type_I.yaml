@@ -1,0 +1,14 @@
+maximum_separation: 3
+minimum_core: 7
+minimum_total: 6
+core_genes:
+  - BrxA
+  - BrxB
+  - BrxC
+  - PglX
+  - PglZ
+  - BrxL
+optional_genes:
+  - BrxA
+prohibited_genes:
+  - BrxE
