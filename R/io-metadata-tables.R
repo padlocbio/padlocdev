@@ -10,12 +10,17 @@ read_sys_meta <- function(file) {
   cols <- readr::cols(
     system    = readr::col_character(),
     type      = readr::col_character(),
-    yaml.name = readr::col_character(),
+    #yaml.name = readr::col_character(),
     search    = readr::col_logical(),
-    notes     = readr::col_character()
+    notes     = readr::col_character(),
+    reference     = readr::col_character(),
+    group     = readr::col_character(),
+    stroke     = readr::col_character(),
+    fill     = readr::col_character()
+
   )
   out <- readr::read_tsv(
-    file,
+    "M:/padloc_db/padloc-db_2025-05/sys_meta.txt",
     skip = 1,
     col_names = names(cols$cols),
     col_types = cols
