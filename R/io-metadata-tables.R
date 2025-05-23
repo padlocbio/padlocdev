@@ -20,7 +20,7 @@ read_sys_meta <- function(file) {
 
   )
   out <- readr::read_tsv(
-    "M:/padloc_db/padloc-db_2025-05/sys_meta.txt",
+    file,
     skip = 1,
     col_names = names(cols$cols),
     col_types = cols
