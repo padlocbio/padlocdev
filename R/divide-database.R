@@ -58,11 +58,15 @@ group_models <- function(models, sys_groups) {
   # dplyr::arrange(method = "radix") or dplyr::arrange(.locale = "C")
   # to enforce consistent "C"-style collation.
   # i.e. c("A", "b", "C", "d") >> c("A", "C", "b", "d")
-  models_grouped <- split(
-    models[sort(names(models), method = "radix")],
-    dplyr::arrange(sys_groups, yaml.name, method = "radix")$group
-  )
-  models_grouped
+  models_sorted<-models[sort(names(models))]
+  systems_sorted<-dplyr::arrange(sys_groups, yaml.name, .locale = "en" )
+
+  aa<-as_tibble(names(models_sorted))%>%mutate(model.order=row_number())%>%rename(yaml.name=value)
+  ab<-systems_sorted%>%mutate(system.number=row_number())
+  ac<-aa%>%left_join(ab)
+
+  models_grouped <- split(models_sorted,systems_sorted$group)
+  #models_grouped
 }
 
 # TODO: Write documentation
@@ -73,6 +77,7 @@ group_models <- function(models, sys_groups) {
 #' @param hmm_meta_expanded ...
 #' @param sys_meta ...
 #' @export
+#' #sys_expanded<-models_expanded
 group_overlap <- function(sys_expanded, sys_groups, hmm_meta_expanded, sys_meta) {
 
   # subset for gene elements
@@ -86,7 +91,7 @@ group_overlap <- function(sys_expanded, sys_groups, hmm_meta_expanded, sys_meta)
   # filter for unique genes
   e <- lapply(d, function(x) unique(x))
 
-  ncomb <- ncomb(length(e), 2)
+  #ncomb <- ncomb(length(e), 2)
   out <- tibble::tibble()
 
   for (i in 1:(length(e)-1)) {
@@ -102,6 +107,7 @@ group_overlap <- function(sys_expanded, sys_groups, hmm_meta_expanded, sys_meta)
   # Filter for groups with overlap
   out <- out %>% dplyr::filter(!sapply(intersect, identical, character(0)))
   out
+
 
 }
 
